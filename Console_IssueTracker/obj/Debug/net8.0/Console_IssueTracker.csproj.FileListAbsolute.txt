@@ -1,0 +1,15 @@
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\bin\Debug\net8.0\Console_IssueTracker.exe
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\bin\Debug\net8.0\Console_IssueTracker.deps.json
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\bin\Debug\net8.0\Console_IssueTracker.runtimeconfig.json
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\bin\Debug\net8.0\Console_IssueTracker.dll
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\bin\Debug\net8.0\Console_IssueTracker.pdb
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.AssemblyInfoInputs.cache
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.AssemblyInfo.cs
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.csproj.CoreCompileInputs.cache
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.sourcelink.json
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.dll
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\refint\Console_IssueTracker.dll
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.pdb
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\Console_IssueTracker.genruntimeconfig.cache
+C:\Users\Folse\OneDrive\Документы\!MyProjects\!Repositories\Console_IssueTracker\Console_IssueTracker\obj\Debug\net8.0\ref\Console_IssueTracker.dll
