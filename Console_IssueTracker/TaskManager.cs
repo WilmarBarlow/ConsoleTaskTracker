@@ -162,18 +162,21 @@ namespace Console_IssueTracker
 
                         Console.WriteLine("Вывод списка задач, отсортированных по дате выполнения: ");
                         PrintTasks(sortDateTask);
+                        Console.ReadLine();
                         return;
                     case 2:
                         IEnumerable<Task> sortPriorityTask = _tasks.OrderBy(p => p.Priority).ToList();
 
                         Console.WriteLine("Вывод списка задач, отсортированных по приоритету: ");
                         PrintTasks(sortPriorityTask);
+                        Console.ReadLine();
                         return;
                     case 3:
                         Console.WriteLine("Выполняем переход обратно...");
                         return;
                     default:
                         Console.WriteLine("Неизвестная команда!");
+                        Console.ReadLine();
                         break;
                 }
                 Console.ReadLine();
@@ -200,7 +203,7 @@ namespace Console_IssueTracker
                 PrintTasks(_tasks);
 
                 Console.WriteLine("Введите номер задачи, которую хотите изменить: ");
-                if (int.TryParse(Console.ReadLine(), out int number) && number < 1 && number > _tasks.Count)
+                if (!int.TryParse(Console.ReadLine(), out int number) && (number < 1 || number > _tasks.Count))
                 {
                     Console.WriteLine("Ошибка: Неверный номер задачи!");
                     Console.ReadLine();
@@ -277,7 +280,7 @@ namespace Console_IssueTracker
         public void ChangePriority(int i)
         {
             Console.WriteLine("Введите цифрой новый приоритет (от 1 до 3): ");
-            if (int.TryParse(Console.ReadLine(), out int priority) && priority < 1 && priority > 3)
+            if (!int.TryParse(Console.ReadLine(), out int priority) && (priority < 1 || priority > 3))
             {
                 Console.WriteLine("Ошибка: приоритет не может быть меньше 1 и больше 3");
                 Console.ReadLine();
@@ -297,7 +300,7 @@ namespace Console_IssueTracker
         }
         public void ChangeDeadline(int i)
         {
-            Console.WriteLine("Введите новый дедлайн в формате ДД.ММ.ГГГГ (например 29.06.2025): ");
+            Console.WriteLine("Введите новый дедлайн в формате ДД.ММ.ГГГГ ЧЧ:мм или ДД.ММ.ГГГГ (например 29.06.2025 13:00 или 29.06.2025): ");
             string input = Console.ReadLine();
 
             if (DateTime.TryParseExact(input,
