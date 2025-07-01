@@ -1,11 +1,11 @@
 ﻿using System.Globalization;
+using System.Net.NetworkInformation;
 
 namespace Console_IssueTracker
 {
     public class TaskManager
     {
         private List<Task> _tasks = new List<Task>();
-        private string _dataFilePath = "tasks.csv";
 
         public void AddTask(string title)
         {
@@ -323,6 +323,61 @@ namespace Console_IssueTracker
                 Console.WriteLine("Ошибка формата! Используйте ДД.ММ.ГГГГ ЧЧ:мм или ДД.ММ.ГГГГ");
             }
             Console.ReadLine();
+        }
+
+        // Методы для работы с файлами
+        public void LoadTasksFromFile()
+        {
+            try
+            {
+                if (!File.Exists("tasks.txt"))
+                {
+                    File.WriteAllText("tasks.txt", string.Empty);
+                    return;
+                }
+
+                string[] lines = File.ReadAllLines("tasks.txt");
+                _tasks.Clear();
+
+                foreach (string line in lines)
+                {
+                    if (string.IsNullOrEmpty(line))
+                        continue;
+
+                    try
+                    {
+                        Task task = Task.Parse(line);
+                        _tasks.Add(task);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка при чтении задачи: {ex.Message}");
+                    }
+                }
+                Console.WriteLine($"Загружено {_tasks.Count} задач из файла.");
+            }
+            catch (Exception ex )
+            {
+                Console.WriteLine($"Ошибка при загрузке задач: {ex.Message}");
+            }
+        }
+        public void SaveTasksToFile()
+        {
+            try
+            {
+                List<string> lines = new List<string>();
+                foreach (Task task in _tasks)
+                {
+                    lines.Add(task.ToFileString());
+                }
+
+                File.WriteAllLines("tasks.txt", lines);
+                Console.WriteLine($"Сохранено {_tasks.Count} задач в файл.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при сохранении задач: {ex.Message}");
+            }
         }
     }
 }

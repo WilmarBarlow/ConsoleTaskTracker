@@ -1,4 +1,6 @@
 ﻿
+using System.Globalization;
+
 namespace Console_IssueTracker
 {
     public class Task
@@ -6,9 +8,8 @@ namespace Console_IssueTracker
         // Поля
         private string _title;
         private string _description;
-        private int _priority = 4;
+        private int? _priority = null;
         private DateTime _deadline = DateTime.MinValue;
-        //private bool _isCompleted;
 
         // Свойства
         public string Title
@@ -31,7 +32,7 @@ namespace Console_IssueTracker
                 _description = value;
             }
         }
-        public int Priority
+        public int? Priority
         {
             get => _priority;
             private set
@@ -117,6 +118,47 @@ namespace Console_IssueTracker
             return $"[{(IsCompleted ? "X" : " ")}] Задача: {_title}" +
                 $"\n\tОписание задачи: {_description}" +
                 $"\n\tПриоритет задачи: {(_priority >= 1 && _priority <= 3 ? _priority : "-" )} | Срок до: {(_deadline == DateTime.MinValue ? "-" : (_deadline > DateTime.Now ? _deadline : "просрочено"))}";
-        }       
+        }
+
+        public string ToFileString()
+        {
+            return $"{Title}|{Description}|{IsCompleted}|{(_priority.HasValue ? _priority.ToString() : "")}|{Deadline:dd.MM.yyyy HH:mm}"; // проверить работает ли без часов
+        }
+        public static Task Parse(string line)
+        {
+            var parts = line.Split('|');
+            if (parts.Length != 5)
+                throw new FormatException("Неверный формат строки задачи");
+
+            int? priority = null;
+            if (!string.IsNullOrEmpty(parts[3]) && int.TryParse(parts[3], out int parsedPriority))
+            {
+                priority = parsedPriority;
+            }
+
+            DateTime deadline;
+            if (!DateTime.TryParseExact(parts[4],
+                new[] { "dd.MM.yyyy HH:mm", "dd.MM.yyyy" },
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out deadline))
+            {
+                throw new FormatException("Неверный формат даты. Используйте dd.MM.yyyy HH:mm или dd.MM.yyyy");
+            }
+
+            if (!parts[4].Contains(":"))
+            {
+                deadline = deadline.Date.AddHours(23).AddMinutes(59);
+            }
+
+            return new Task(parts[0])
+            {
+                Description = parts[1],
+                IsCompleted = bool.Parse(parts[2]),
+                Priority = priority,
+                Deadline = deadline
+            };
+        }
+
     }
 }

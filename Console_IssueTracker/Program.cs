@@ -6,6 +6,7 @@ class Program
     {
         var manager = new TaskManager();
 
+        manager.LoadTasksFromFile();
         ShowStartScreen();
         Console.ReadLine();
 
@@ -66,6 +67,7 @@ class Program
                     break;
             }
         }
+        manager.SaveTasksToFile();
 
         Console.ReadLine();
     }
